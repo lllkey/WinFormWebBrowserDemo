@@ -14,6 +14,27 @@ namespace WebBrowserDemo.Utils
             return Instance;
         }
 
+        #region 初始化，主要设置崩溃日志
+        public void LogInit()
+        {
+            System.Windows.Forms.Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+           // System.Windows.Forms.Application.SetUnhandledExceptionMode(System.Windows.Forms.UnhandledExceptionMode.CatchException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+        }
+
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            //MessageBox.Show(((Exception)e.ExceptionObject).Message + "\r\n" + ((Exception)e.ExceptionObject).StackTrace, "系统信息");
+            ErrorLog((Exception)e.ExceptionObject);
+        }
+
+        void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            //MessageBox.Show(e.Exception.Message + "\r\n" + e.Exception.StackTrace, "系统信息");
+            ErrorLog(e.Exception);
+        }
+        #endregion
+
         #region 公共属性
         public string StrStartupPath
         {

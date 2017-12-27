@@ -20,6 +20,7 @@ namespace WebBrowserDemo
         public TestForm()
         {
             InitializeComponent();
+            LogHelper.GetLogHelper().LogInit();
         }
 
         [DllImport("user32.dll")]
@@ -50,7 +51,6 @@ namespace WebBrowserDemo
             SetForegroundWindow(iHandle);
             System.Windows.Forms.SendKeys.SendWait("Y%");
 
-       
             webBrowser1.ObjectForScripting = this;//具体公开的对象,这里可以公开自定义对象
             
             webBrowser1.ScriptErrorsSuppressed = true;
