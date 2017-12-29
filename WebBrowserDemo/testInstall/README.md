@@ -1,6 +1,6 @@
-#nsis安装包修改最后的安装结果显示 
+# nsis安装包修改最后的安装结果显示 
 
-###修改基本变量定义 
+### 修改基本变量定义 
 <pre><code>
 Var My_FINISHPAGE_TEXT 
 Var returnValue 
@@ -18,8 +18,8 @@ Function .onInit
 FunctionEnd 
 </code></pre>
 
-##方法一：根据调用的exe的main函数的返回值判断是否成功 
-###在Section相关位置修改： 
+## 方法一：根据调用的exe的main函数的返回值判断是否成功 
+### 在Section相关位置修改： 
 <pre><code>
   ExecWait "$PROGRAMFILES\${SAG_EN_PRODUCT_NAME}\Tempbin\${SAG_FILE_PREFIX}WebBrowserDemo.exe" $returnValue 
   ; 根据返回结果判断成功、失败，最终调用不同的函数 
@@ -34,7 +34,7 @@ FunctionEnd
   call funSuccess 
   end: 
 </code></pre>
-###函数： 
+### 函数： 
 <pre><code>
 ; 安装成功 
 Function funSuccess 
@@ -46,13 +46,13 @@ Function funFail
 FunctionEnd 
 </code></pre>
 
-##方法二：根据某个文件是否存在判断是否成功 
-###在Section相关位置修改： 
+## 方法二：根据某个文件是否存在判断是否成功 
+### 在Section相关位置修改： 
 <pre><code>
   ExecWait "$PROGRAMFILES\${SAG_EN_PRODUCT_NAME}\Tempbin\${SAG_FILE_PREFIX}WebBrowserDemo.exe" 
   call funFinish 
 </code></pre>
-###函数： 
+### 函数： 
 <pre><code>
 ; 执行exe之后调用方法判断文件是否存在 
 Function funFinish 
