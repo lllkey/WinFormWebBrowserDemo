@@ -67,3 +67,12 @@ Function funFinish
 FunctionEnd 
 </code></pre>
 
+## 需要注意的地方
+### define的顺序会影响结果
+如下的顺序，如果MUI_FINISHPAGE_TEXT的define放到MUI_PAGE_FINISH后面，最后的界面的文字就是默认的文字了。
+<pre><code>
+!define MUI_FINISHPAGE_TEXT "$My_FINISHPAGE_TEXT" 
+!insertmacro MUI_PAGE_FINISH
+</code></pre>
+
+
