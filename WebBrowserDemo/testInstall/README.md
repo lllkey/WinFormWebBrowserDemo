@@ -16,6 +16,7 @@ Var returnValue
 Function .onInit 
   StrCpy $My_FINISHPAGE_TEXT ${SAG_EN_PRODUCT_NAME}安装成功... 
 FunctionEnd 
+</code></pre>
 
 ##方法一：根据调用的exe的main函数的返回值判断是否成功 
 ###在Section相关位置修改： 
